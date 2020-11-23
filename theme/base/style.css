@@ -1,0 +1,23 @@
+body{
+        background-color: rgb(200,200,200);
+        font-family: Arial, Helvetica, sans-serif;
+        color: rgb(20,20,200);
+}
+header{
+    background-color: rgb(20,20,200);
+    color: rgb(200,200,200);
+    text-align: center;
+    padding: 6px;
+}
+nav{
+    background-color: rgb(100,100,200);
+    color: rgb(200,200,200);
+}
+main{
+    margin-left: 12px;
+}
+footer{
+    padding: 6px 0 6px 24px;
+    background-color: rgb(100,100,100);
+    color: white;
+}
