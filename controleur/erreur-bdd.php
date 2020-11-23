@@ -1,5 +1,6 @@
 <?php
 /**
+ * Page affichée en cas d'erreur de connexion à la base de données
  * 
  * Marc Augier
  * (c) 2020
