@@ -1,5 +1,9 @@
 <?php
-
+/**
+ * 
+ * Marc Augier
+ * (c) 2020
+ */
 echo "<h1>Ecrire un nouvel article</h1>";
 
 print_r($_GET);

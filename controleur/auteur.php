@@ -1,4 +1,9 @@
 <?php
+/**
+ * 
+ * Marc Augier
+ * (c) 2020
+ */
 
 echo "<h2>Liste des auteurs</h2>";
 

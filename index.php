@@ -1,5 +1,9 @@
 <?php
-
+/**
+ * 
+ * Marc Augier
+ * (c) 2020
+ */
 include "inc/config.php";     // Personnalisations
 include "inc/fonctions.php";  // Moteur principal commun à tous les sites
 

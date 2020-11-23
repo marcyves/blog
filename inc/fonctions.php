@@ -1,5 +1,9 @@
 <?php
-
+/**
+ * 
+ * Marc Augier
+ * (c) 2020
+ */
 function debut($titre){
     global $config;
 

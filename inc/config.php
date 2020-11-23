@@ -1,4 +1,9 @@
 <?php
+/**
+ * 
+ * Marc Augier
+ * (c) 2020
+ */
 
 // Installation du 'framework'
 $config['dossier_pages'] = "controleur/";
