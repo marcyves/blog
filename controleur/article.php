@@ -1,5 +1,9 @@
 <?php
-
+/**
+ * 
+ * Marc Augier
+ * (c) 2020
+ */
 if(isset($_GET['article'])){
 
     $id = $_GET['article'];

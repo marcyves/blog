@@ -1,5 +1,9 @@
 <?php
-
+/**
+ * 
+ * Marc Augier
+ * (c) 2020
+ */
 echo "<h2>Liste des catégories</h2>";
 
 $sql = "SELECT nom, count(id_article) AS compteur FROM categorie 
