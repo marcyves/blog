@@ -41,13 +41,14 @@ function debut($titre){
 }
 
 function menu($dir){
+    global $config;
 
     // Ouvre un dossier bien connu, et liste tous les fichiers
     if (is_dir($dir)) {
         if ($dh = opendir($dir)) {
             echo "<nav>";
             while (($file = readdir($dh)) !== false) {
-                if (($file != ".") && ($file != "..") && ($file != "erreur-bdd.php")){
+                if (($file != ".") && ($file != "..") && ($file != $config["erreur"].".php")){
                     $label = substr($file,0, strlen($file)-4);
                     lienMenu($label);
                 }
