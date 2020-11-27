@@ -19,24 +19,27 @@ function debut($titre){
     }
 
     // Gestion du cookie de connexion
-    if (isset($_GET['cmd'])){
-        if($_GET['cmd'] == 'Connexion'){
-            // L'utilisateur a demandé à se connecter
-            $id_utilisateur = $_GET['auteur'];
-            setcookie("utilisateur",$id_utilisateur,time()+60*5);
-        } else if($_GET['cmd'] == 'deconnexion'){
+    if(isset($_COOKIE['utilisateur'])){
+        // l'utilisateur est connecté
+        if (isset($_GET['deconnexion'])){
             $id_utilisateur = 0;
             // On efface le cookie
-            setcookie("utilisateur",$id_utilisateur,time()-60*5);
+            setcookie("utilisateur",$id_utilisateur,time()-60*5);   
+        }else{
+            // L'utilisateur est déjà connecté
+            $id_utilisateur = $_COOKIE['utilisateur'];
+            // On relance le cookie pour 5 minutes
+            setcookie("utilisateur",$id_utilisateur,time()+60*5);
         }
-    }else if(isset($_COOKIE['utilisateur'])){
-        // L'utilisateur est déjà connecté
-        $id_utilisateur = $_COOKIE['utilisateur'];
-        // On relance le cookie pour 5 minutes
-        setcookie("utilisateur",$id_utilisateur,time()+60*5);
     }else{
         // L'utilisateur n'est pas connecté
-        $id_utilisateur = 0;
+        if (isset($_GET['connexion'])){
+                // L'utilisateur a demandé à se connecter
+                $id_utilisateur = $_GET['auteur'];
+                setcookie("utilisateur",$id_utilisateur,time()+60*5);            
+        }else{
+            $id_utilisateur = 0;
+        }
     }
 
 ?>
@@ -80,7 +83,7 @@ function menu($dir){
             closedir($dh);
 
             if($id_utilisateur != 0 ){
-                echo '<a href="?page=article&cmd=deconnexion">Déconnexion</a>';
+                echo '<a href="?page=article&deconnexion=ok">Déconnexion</a>';
             }else{
                 lienMenu("connexion");
             }

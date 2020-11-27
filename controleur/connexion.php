@@ -20,5 +20,5 @@ foreach ($dbh->query($sql) as $ligne) {
 echo "</select><br>";
 
 
-echo '<input type="submit" name="cmd" value="Connexion">
+echo '<input type="submit" name="connexion" value="Se connecter">
 </form>';
