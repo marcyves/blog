@@ -9,6 +9,7 @@
 $config['dossier_pages'] = "controleur/";
 $config['theme']         = "base";
 $config['accueil']       = "auteur";
+$config['erreur']       = "erreur-bdd";
 
 // dev pour avoir les messages d'information
 $config['mode']          = "prod"; 

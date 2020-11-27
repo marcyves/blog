@@ -17,7 +17,7 @@ if (db()){
 }else{
     // La BDD n'est pas accessible
     // Affiche une page statique d'erreur
-    $page = "erreur-bdd";
+    $page = $config["erreur"];
 }
 
 debut("Le Blog version 2");
