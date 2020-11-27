@@ -1,7 +1,7 @@
-# blog
-Un site de blogging tout simple réalisé avec les étudiants de l'université de Nice-Sophia Antipolis
+# Blog
+Un site de blogging tout simple réalisé avec les étudiants de l'université de Nice-Sophia Antipolis.
 
-La base de données peut être crée avec le script unsa-blog.sql fourni
+La base de données peut être crée avec le script unsa-blog.sql fourni.
 
 ## Fonctionnalités
 
