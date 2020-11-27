@@ -18,29 +18,7 @@ function debut($titre){
         }
     }
 
-    // Gestion du cookie de connexion
-    if(isset($_COOKIE['utilisateur'])){
-        // l'utilisateur est connecté
-        if (isset($_GET['deconnexion'])){
-            $id_utilisateur = 0;
-            // On efface le cookie
-            setcookie("utilisateur",$id_utilisateur,time()-60*5);   
-        }else{
-            // L'utilisateur est déjà connecté
-            $id_utilisateur = $_COOKIE['utilisateur'];
-            // On relance le cookie pour 5 minutes
-            setcookie("utilisateur",$id_utilisateur,time()+60*5);
-        }
-    }else{
-        // L'utilisateur n'est pas connecté
-        if (isset($_GET['connexion'])){
-                // L'utilisateur a demandé à se connecter
-                $id_utilisateur = $_GET['auteur'];
-                setcookie("utilisateur",$id_utilisateur,time()+60*5);            
-        }else{
-            $id_utilisateur = 0;
-        }
-    }
+    $id_utilisateur =testeConnexionUtilisateur();
 
 ?>
 <!DOCTYPE html>
@@ -61,6 +39,37 @@ function debut($titre){
     </header>
     <main>
 <?php
+}
+
+function testeConnexionUtilisateur(){
+    /**
+     * Retourne 0 si pas connecté
+     * ou l'id de l'auteur si connecté
+     */
+    // Gestion du cookie de connexion
+    if(isset($_COOKIE['utilisateur'])){
+        // l'utilisateur est connecté
+        if (isset($_GET['deconnexion'])){
+            $id = 0;
+            // On efface le cookie
+            setcookie("utilisateur",$id,time()-60*5);   
+        }else{
+            // L'utilisateur est déjà connecté
+            $id = $_COOKIE['utilisateur'];
+            // On relance le cookie pour 5 minutes
+            setcookie("utilisateur",$id,time()+60*5);
+        }
+    }else{
+        // L'utilisateur n'est pas connecté
+        if (isset($_GET['connexion'])){
+                // L'utilisateur a demandé à se connecter
+                $id = $_GET['auteur'];
+                setcookie("utilisateur",$id,time()+60*5);            
+        }else{
+            $id = 0;
+        }
+    }
+    return $id;
 }
 
 function menu($dir){
