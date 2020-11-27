@@ -5,7 +5,7 @@
  * (c) 2020
  */
 function debut($titre){
-    global $config;
+    global $config, $id_utilisateur;
 
     if(!is_dir("theme/".$config['theme'])){
         echo "<br>Erreur: dossier thème inexistant";
@@ -18,6 +18,26 @@ function debut($titre){
         }
     }
 
+    // Gestion du cookie de connexion
+    if (isset($_GET['cmd'])){
+        if($_GET['cmd'] == 'Connexion'){
+            // L'utilisateur a demandé à se connecter
+            $id_utilisateur = $_GET['auteur'];
+            setcookie("utilisateur",$id_utilisateur,time()+60*5);
+        } else if($_GET['cmd'] == 'deconnexion'){
+            $id_utilisateur = 0;
+            // On efface le cookie
+            setcookie("utilisateur",$id_utilisateur,time()-60*5);
+        }
+    }else if(isset($_COOKIE['utilisateur'])){
+        // L'utilisateur est déjà connecté
+        $id_utilisateur = $_COOKIE['utilisateur'];
+        // On relance le cookie pour 5 minutes
+        setcookie("utilisateur",$id_utilisateur,time()+60*5);
+    }else{
+        // L'utilisateur n'est pas connecté
+        $id_utilisateur = 0;
+    }
 
 ?>
 <!DOCTYPE html>
@@ -41,19 +61,29 @@ function debut($titre){
 }
 
 function menu($dir){
-    global $config;
+    global $config, $id_utilisateur;
 
     // Ouvre un dossier bien connu, et liste tous les fichiers
     if (is_dir($dir)) {
         if ($dh = opendir($dir)) {
             echo "<nav>";
             while (($file = readdir($dh)) !== false) {
-                if (($file != ".") && ($file != "..") && ($file != $config["erreur"].".php")){
+                if (($file != ".") 
+                 && ($file != "..") 
+                 && ($file != $config["erreur"].".php")
+                 && ($file != "connexion.php")
+                ){
                     $label = substr($file,0, strlen($file)-4);
                     lienMenu($label);
                 }
             }
             closedir($dh);
+
+            if($id_utilisateur != 0 ){
+                echo '<a href="?page=article&cmd=deconnexion">Déconnexion</a>';
+            }else{
+                lienMenu("connexion");
+            }
             echo "</nav>";
         }
 
