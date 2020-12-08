@@ -182,7 +182,7 @@ function langue($langue, $label){
                     $texte = "Liste des auteurs";
                 break;
                 default:
-                    $texte = "[$label] non traduit en $langue";
+                    $texte = "[$label] non traduit en [$langue]";
                 }
         break;
         case "EN":
@@ -191,7 +191,7 @@ function langue($langue, $label){
                     $texte = "The Translated Blog";
                 break;
                 default:
-                    $texte = "[$label] non traduit en $langue";
+                    $texte = "[$label] non traduit en [$langue]";
             }
         break;
         default:
