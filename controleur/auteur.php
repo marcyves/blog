@@ -5,7 +5,7 @@
  * (c) 2020
  */
 
-echo "<h2>Liste des auteurs</h2>";
+echo "<h2>".langue($langue,"liste-auteurs")."</h2>";
 
 // Cette requête affiche uniquement les auteurs aui ont écrit un article
 $sql = "SELECT A.nom, prénom, count(R.id_article) AS compte 

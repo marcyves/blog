@@ -7,6 +7,13 @@
 include "inc/config.php";     // Personnalisations
 include "inc/fonctions.php";  // Moteur principal commun à tous les sites
 
+if(isset($_GET['langue'])){
+    $langue = $_GET['langue'];
+}else{
+//    $langue = $config['langue'];
+    $langue = "FR";
+}
+
 if (db()){
     // La connexion BDD est ok, site normal
     if(isset($_GET['page'])){
@@ -20,5 +27,5 @@ if (db()){
     $page = $config["erreur"];
 }
 
-debut("Le Blog version 2");
+debut(langue($langue,"titre"));
 fin($page);
