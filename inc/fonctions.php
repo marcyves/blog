@@ -59,6 +59,30 @@ function testeConnexionUtilisateur(){
     return $id;
 }
 
+function langueChoisie(){
+    /**
+     * Retourne la langue du site
+     * FR ou EN
+     */
+    // Gestion du cookie
+    if(isset($_COOKIE['langue'])){
+        $langue = $_COOKIE['langue'];
+        // Il faudrait vérifier si la langue est supportée
+        // On relance le cookie pour 5 minutes
+        setcookie("langue",$langue,time()+60*5);
+    }else{
+        if (isset($_GET['langue'])){
+            // L'utilisateur a demandé une traduction
+            $langue = $_GET['langue'];
+            // Il faudrait vérifier si la langue est supportée
+            setcookie("langue",$langue,time()+60*5);            
+        }else{
+            $langue = "FR";
+        }
+    }
+    return $langue;
+}
+
  function debut($titre){
     global $config, $id_utilisateur;
 

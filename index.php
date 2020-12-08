@@ -7,12 +7,7 @@
 include "inc/config.php";     // Personnalisations
 include "inc/fonctions.php";  // Moteur principal commun à tous les sites
 
-if(isset($_GET['langue'])){
-    $langue = $_GET['langue'];
-}else{
-//    $langue = $config['langue'];
-    $langue = "FR";
-}
+$langue = langueChoisie();
 
 if (db()){
     // La connexion BDD est ok, site normal
