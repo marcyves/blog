@@ -171,9 +171,28 @@ function fin($page){
 }
 
 /*
-Version traduction par table MySQL, directement dans PHP
+Version traduction par include PHP
 */
 function langue($langue, $label){
+
+    if (file_exists("lang/$langue.php")){
+        include_once "lang/$langue.php";
+        if ($texte[$label]){
+            $m = $texte[$label];
+        }else{
+            $m = "[$label]";
+        }
+    }else{
+        $m= "[$label] langue non supportée [$langue]";
+    }
+
+    return $m;
+}
+
+/*
+Version traduction par table MySQL
+*/
+function langueSQL($langue, $label){
     global $dbh;
 
     if(($langue == "FR") || ($langue == "EN")){
