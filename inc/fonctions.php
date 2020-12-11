@@ -192,6 +192,9 @@ function langue($langue, $label){
         list($texte) = $req->fetch();
         // list est plus lisible que ceci: 
         // $texte = $req->fetch()[0];
+        if($texte ==""){
+            $texte = "[$label]";
+        }
     }else {
         $texte = "[$label] non traduit, langue [$langue] non supportée";
     }
