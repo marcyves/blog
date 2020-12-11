@@ -64,22 +64,23 @@ function langueChoisie(){
      * Retourne la langue du site
      * FR ou EN
      */
-    // Gestion du cookie
-    if(isset($_COOKIE['langue'])){
-        $langue = $_COOKIE['langue'];
+    if (isset($_GET['langue'])){
+        // L'utilisateur a demandé une traduction
+        $langue = $_GET['langue'];
         // Il faudrait vérifier si la langue est supportée
-        // On relance le cookie pour 5 minutes
-        setcookie("langue",$langue,time()+60*5);
+        setcookie("langue",$langue,time()+60*5);            
     }else{
-        if (isset($_GET['langue'])){
-            // L'utilisateur a demandé une traduction
-            $langue = $_GET['langue'];
+        // Gestion du cookie
+        if(isset($_COOKIE['langue'])){
+            $langue = $_COOKIE['langue'];
             // Il faudrait vérifier si la langue est supportée
-            setcookie("langue",$langue,time()+60*5);            
+            // On relance le cookie pour 5 minutes
+            setcookie("langue",$langue,time()+60*5);
         }else{
             $langue = "FR";
         }
     }
+
     return $langue;
 }
 
@@ -169,8 +170,38 @@ function fin($page){
     <?php
 }
 
+/*
+Version traduction par table MySQL, directement dans PHP
+*/
 function langue($langue, $label){
-    // Version traduite codée en dur
+    global $dbh;
+
+    if(($langue == "FR") || ($langue == "EN")){
+        /**
+         * Avec marqueurs
+         */
+        // $sql = "SELECT texte FROM label WHERE langue = ? and label = ?";
+        // $req = $dbh->prepare($sql);
+        // $req->execute(array($langue, $label));
+        /**
+         * Avec paramètres nommés
+         */
+        $sql = "SELECT texte FROM label WHERE langue = :langue and label = :label";
+        $req = $dbh->prepare($sql);
+        $req->execute(array(":langue" => $langue, ":label" => $label));
+        list($texte) = $req->fetch();
+        // list est plus lisible que ceci: 
+        // $texte = $req->fetch()[0];
+    }else {
+        $texte = "[$label] non traduit, langue [$langue] non supportée";
+    }
+
+    return $texte;
+}
+/*
+    Version traduction "codée en dur", directement dans PHP
+*/
+function languePHP($langue, $label){
     switch ($langue)
     {
         case "FR":
@@ -195,7 +226,7 @@ function langue($langue, $label){
             }
         break;
         default:
-            $texte = "[$label] non traduit";
+        $texte = "[$label] non traduit, langue [$langue] non supportée";
     }
 
     return $texte;
