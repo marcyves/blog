@@ -31,7 +31,15 @@ footer{
     background-color: rgb(100,100,100);
     color: white;
 }
-
+.boite{
+    background-color: cadetblue;
+    border-radius: 4pt;
+    padding-top: 6pt;
+    padding-bottom: 6pt;
+    padding-left: 8%;
+    margin-left: 15%;
+    width:70%;
+}
 /*
 Généré automatiquement depuis https://csswarp.eleqtriq.com/
 */

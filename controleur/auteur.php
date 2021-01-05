@@ -5,7 +5,8 @@
  * (c) 2020
  */
 
-echo "<h2>".langue($langue,"liste-auteurs")."</h2>";
+echo "<div class='boite'>
+<h2>".langue($langue,"liste-auteurs")."</h2>";
 
 // Cette requête affiche uniquement les auteurs aui ont écrit un article
 $sql = "SELECT A.nom, prénom, count(R.id_article) AS compte 
@@ -28,7 +29,7 @@ foreach ($dbh->query($sql) as $ligne) {
     }
     echo "<li>".$ligne['prénom']." ".$ligne['nom']."$tmp</li>";
 }
-echo "</ol>";
+echo "</ol></div>";
 
 // Debug
 if ($dbh->errorInfo()[0] != 0){
