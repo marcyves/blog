@@ -123,6 +123,25 @@ function langueChoisie(){
             ?>
         </header>
         <main>
+        <div id='warped'>
+                     <span class='w0'>B</span>
+                     <span class='w1'>o</span>
+                     <span class='w2'>n</span>
+                     <span class='w3'>j</span>
+                     <span class='w4'>o</span>
+                     <span class='w5'>u</span>
+                     <span class='w6'>r</span>
+                     <span class='w7'> </span>
+                     <span class='w8'>l</span>
+                     <span class='w9'>e</span>
+                     <span class='w10'>s</span>
+                     <span class='w11'> </span>
+                     <span class='w12'>a</span>
+                     <span class='w13'>m</span>
+                     <span class='w14'>i</span>
+                     <span class='w15'>s</span>
+        </div>
+
     <?php
 }
 
