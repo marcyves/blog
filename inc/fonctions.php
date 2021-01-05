@@ -85,7 +85,7 @@ function langueChoisie(){
 }
 
  function debut($titre){
-    global $config, $id_utilisateur;
+    global $config, $id_utilisateur, $langue;
 
     if(!is_dir("theme/".$config['theme'])){
         echo "<br>Erreur: dossier thème inexistant";
@@ -115,6 +115,11 @@ function langueChoisie(){
             <p>Des news, des vraies</p>
             <?php
             menu($config['dossier_pages']);
+            if ($langue == "FR"){
+                echo '<a class="lang" href="?langue=EN">English</a>';
+            }else{
+                echo '<a class="lang" href="?langue=FR">Français</a>';
+            }
             ?>
         </header>
         <main>
@@ -171,7 +176,9 @@ function fin($page){
 }
 
 /*
+
 Version traduction par include PHP
+
 */
 function langue($langue, $label){
 
