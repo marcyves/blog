@@ -50,7 +50,8 @@ Ceci est essentiellement un exercice pédagogique sans garantie de fonctionnemen
 -  menu différent par niveau de visiteur connecté ou pas
 
 ## vous avez aimé ?
+Pourquoi pas me remercier en m'offrant un café ?
 
-<a href="https://www.buymeacoffee.com/marcyves" target="_blank"><img src="https://cdn.buymeacoffee.com/buttons/v2/default-blue.png" alt="Buy Me A Coffee" style="height: 60px !important;width: 217px !important;" ></a>
+<a href="https://www.buymeacoffee.com/marcyves" target="_blank"><img src="https://cdn.buymeacoffee.com/buttons/v2/default-blue.png" alt="Buy Me A Coffee" width="210" ></a>
 
 Réalisé par [@marcyves](https://github.com/marcyves)
